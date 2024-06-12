@@ -1,8 +1,12 @@
 package id.my.hendisantika.springbootcassandracrud.repository;
 
+import id.my.hendisantika.springbootcassandracrud.model.SuperHero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraOperations;
+import org.springframework.data.cassandra.core.query.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,4 +23,13 @@ public class SuperHeroQueryRepositoryImpl implements SuperHeroQueryRepository {
 
     @Autowired
     private CassandraOperations cassandraTemplate;
+
+    @Override
+    public List<SuperHero> save() {
+        List<SuperHero> superHeroes = cassandraTemplate.select(Query.empty(), SuperHero.class);
+        if (superHeroes.isEmpty())
+            cassandraTemplate.insert(HelperUtil.getSuperHeroesData());
+
+        return cassandraTemplate.select(Query.empty(), SuperHero.class);
+    }
 }
