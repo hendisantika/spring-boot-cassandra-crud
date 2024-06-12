@@ -58,4 +58,9 @@ public class SuperHeroQueryRepositoryImpl implements SuperHeroQueryRepository {
     public SuperHero getSingleSuperHeroBySuperName(String superName) {
         return cassandraTemplate.selectOne(Query.query(Criteria.where("super_name").is(superName)).withAllowFiltering(), SuperHero.class);
     }
+
+    @Override
+    public List<SuperHero> getSuperHeroByAgeGreaterThan(int age) {
+        return cassandraTemplate.select(Query.query(Criteria.where("age").gt(age)).withAllowFiltering(), SuperHero.class);
+    }
 }
