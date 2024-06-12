@@ -8,6 +8,7 @@ import org.springframework.data.cassandra.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -62,5 +63,11 @@ public class SuperHeroQueryRepositoryImpl implements SuperHeroQueryRepository {
     @Override
     public List<SuperHero> getSuperHeroByAgeGreaterThan(int age) {
         return cassandraTemplate.select(Query.query(Criteria.where("age").gt(age)).withAllowFiltering(), SuperHero.class);
+    }
+
+    @Override
+    public List<SuperHero> getSuperHeroWhoCanFly(boolean canFly) {
+        List<SuperHero> superHeroList = cassandraTemplate.select(Query.empty(), SuperHero.class);
+        return superHeroList.stream().filter(superHero -> superHero.getSuperPowers().isCanFly() == canFly).collect(Collectors.toList());
     }
 }
