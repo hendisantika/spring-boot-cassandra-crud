@@ -37,4 +37,9 @@ public class SuperHeroQueryServiceImpl implements SuperHeroQueryService {
     public List<SuperHero> getSuperHeroByName(String name) {
         return superHeroQueryRepository.getSuperHeroByName(name);
     }
+
+    @Override
+    public SuperHero getOneSuperHeroByName(String name) {
+        return superHeroQueryRepository.getOneSuperHeroByName(name);
+    }
 }
