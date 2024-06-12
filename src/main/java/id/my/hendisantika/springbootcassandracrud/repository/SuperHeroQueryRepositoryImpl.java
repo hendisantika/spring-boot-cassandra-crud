@@ -43,4 +43,10 @@ public class SuperHeroQueryRepositoryImpl implements SuperHeroQueryRepository {
     public List<SuperHero> getSuperHeroByName(String name) {
         return cassandraTemplate.select(Query.query(Criteria.where("name").is(name)).withAllowFiltering(), SuperHero.class);
     }
+
+    @Override
+    public SuperHero getOneSuperHeroByName(String name) {
+        return cassandraTemplate.selectOne(Query.query(Criteria.where("name").is(name)).withAllowFiltering(), SuperHero.class);
+    }
+
 }
