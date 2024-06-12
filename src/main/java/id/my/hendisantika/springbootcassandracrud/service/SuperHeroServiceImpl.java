@@ -47,4 +47,9 @@ public class SuperHeroServiceImpl implements SuperHeroService {
     public SuperHero save(SuperHero superHero) {
         return repository.save(superHero);
     }
+
+    @Override
+    public SuperHero update(SuperHero superHero) {
+        return repository.save(superHero);
+    }
 }
