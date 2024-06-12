@@ -1,6 +1,7 @@
 package id.my.hendisantika.springbootcassandracrud.repository;
 
 import id.my.hendisantika.springbootcassandracrud.model.SuperHero;
+import id.my.hendisantika.springbootcassandracrud.util.HelperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.data.cassandra.core.query.Criteria;
