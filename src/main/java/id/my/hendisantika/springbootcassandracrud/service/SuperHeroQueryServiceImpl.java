@@ -57,4 +57,9 @@ public class SuperHeroQueryServiceImpl implements SuperHeroQueryService {
     public List<SuperHero> getSuperHeroByAgeGreaterThan(int age) {
         return superHeroQueryRepository.getSuperHeroByAgeGreaterThan(age);
     }
+
+    @Override
+    public List<SuperHero> getSuperHeroWhoCanFly(boolean canFly) {
+        return superHeroQueryRepository.getSuperHeroWhoCanFly(canFly);
+    }
 }
