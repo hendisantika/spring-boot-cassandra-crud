@@ -28,5 +28,8 @@ public class SuperHeroQueryServiceImpl implements SuperHeroQueryService {
         return superHeroQueryRepository.save();
     }
 
-
+    @Override
+    public List<SuperHero> getAll() {
+        return superHeroQueryRepository.getAll();
+    }
 }
