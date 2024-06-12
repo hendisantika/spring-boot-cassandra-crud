@@ -32,4 +32,9 @@ public class SuperHeroQueryRepositoryImpl implements SuperHeroQueryRepository {
 
         return cassandraTemplate.select(Query.empty(), SuperHero.class);
     }
+
+    @Override
+    public List<SuperHero> getAll() {
+        return cassandraTemplate.select(Query.empty(), SuperHero.class);
+    }
 }
