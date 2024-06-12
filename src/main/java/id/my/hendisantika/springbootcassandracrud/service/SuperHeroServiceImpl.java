@@ -22,39 +22,39 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SuperHeroServiceImpl implements SuperHeroService {
 
-    private final SuperHeroRepository repository;
+    private final SuperHeroRepository superHeroRepository;
 
     @Override
     public List<SuperHero> save() {
-        List<SuperHero> superHeroes = repository.findAll();
+        List<SuperHero> superHeroes = superHeroRepository.findAll();
         if (superHeroes.isEmpty())
-            repository.saveAll(HelperUtil.getSuperHeroesData());
+            superHeroRepository.saveAll(HelperUtil.getSuperHeroesData());
 
-        return repository.findAll();
+        return superHeroRepository.findAll();
     }
 
     @Override
     public List<SuperHero> findAll() {
-        return repository.findAll();
+        return superHeroRepository.findAll();
     }
 
     @Override
     public SuperHero findById(Long id) {
-        return repository.findById(id).orElse(SuperHero.builder().build());
+        return superHeroRepository.findById(id).orElse(SuperHero.builder().build());
     }
 
     @Override
     public SuperHero save(SuperHero superHero) {
-        return repository.save(superHero);
+        return superHeroRepository.save(superHero);
     }
 
     @Override
     public SuperHero update(SuperHero superHero) {
-        return repository.save(superHero);
+        return superHeroRepository.save(superHero);
     }
 
     @Override
     public void delete(Long id) {
-        repository.findById(id).ifPresent(superHero -> repository.delete(superHero));
+        superHeroRepository.findById(id).ifPresent(superHero -> superHeroRepository.delete(superHero));
     }
 }
