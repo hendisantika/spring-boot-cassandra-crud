@@ -83,4 +83,15 @@ public class SuperHeroQueryController {
     public List<SuperHero> getSuperHeroByNameLike(@Parameter(description = "Superhero name to be fetched") @PathVariable String name) {
         return superHeroQueryService.getSuperHeroByNameLike(name);
     }
+
+    @Operation(summary = "Get one Superhero by super name using query")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Get one Superhero by super name",
+                    content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SuperHero.class))}),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    })
+    @GetMapping("/one-by-superName/{superName}")
+    public SuperHero getSingleSuperHeroBySuperName(@Parameter(description = "Superhero super name to be fetched") @PathVariable String superName) {
+        return superHeroQueryService.getSingleSuperHeroBySuperName(superName);
+    }
 }
