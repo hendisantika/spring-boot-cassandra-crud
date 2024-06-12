@@ -3,6 +3,7 @@ package id.my.hendisantika.springbootcassandracrud.repository;
 import id.my.hendisantika.springbootcassandracrud.model.SuperHero;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.CassandraOperations;
+import org.springframework.data.cassandra.core.query.Criteria;
 import org.springframework.data.cassandra.core.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -36,5 +37,10 @@ public class SuperHeroQueryRepositoryImpl implements SuperHeroQueryRepository {
     @Override
     public List<SuperHero> getAll() {
         return cassandraTemplate.select(Query.empty(), SuperHero.class);
+    }
+
+    @Override
+    public List<SuperHero> getSuperHeroByName(String name) {
+        return cassandraTemplate.select(Query.query(Criteria.where("name").is(name)).withAllowFiltering(), SuperHero.class);
     }
 }
