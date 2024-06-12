@@ -52,4 +52,9 @@ public class SuperHeroQueryServiceImpl implements SuperHeroQueryService {
     public SuperHero getSingleSuperHeroBySuperName(String superName) {
         return superHeroQueryRepository.getSingleSuperHeroBySuperName(superName);
     }
+
+    @Override
+    public List<SuperHero> getSuperHeroByAgeGreaterThan(int age) {
+        return superHeroQueryRepository.getSuperHeroByAgeGreaterThan(age);
+    }
 }
