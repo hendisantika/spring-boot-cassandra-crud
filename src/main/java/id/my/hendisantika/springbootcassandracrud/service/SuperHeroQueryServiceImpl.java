@@ -32,4 +32,9 @@ public class SuperHeroQueryServiceImpl implements SuperHeroQueryService {
     public List<SuperHero> getAll() {
         return superHeroQueryRepository.getAll();
     }
+
+    @Override
+    public List<SuperHero> getSuperHeroByName(String name) {
+        return superHeroQueryRepository.getSuperHeroByName(name);
+    }
 }
