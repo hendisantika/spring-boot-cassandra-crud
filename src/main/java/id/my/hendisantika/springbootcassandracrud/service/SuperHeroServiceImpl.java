@@ -42,4 +42,9 @@ public class SuperHeroServiceImpl implements SuperHeroService {
     public SuperHero findById(Long id) {
         return repository.findById(id).orElse(SuperHero.builder().build());
     }
+
+    @Override
+    public SuperHero save(SuperHero superHero) {
+        return repository.save(superHero);
+    }
 }
