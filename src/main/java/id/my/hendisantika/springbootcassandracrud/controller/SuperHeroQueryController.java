@@ -105,4 +105,15 @@ public class SuperHeroQueryController {
     public List<SuperHero> getSuperHeroByAgeGreaterThan(@Parameter(description = "Superheroes fetched whose age greater than") @PathVariable int age) {
         return superHeroQueryService.getSuperHeroByAgeGreaterThan(age);
     }
+
+    @Operation(summary = "Get all Superhero who can or can not fly using query")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Superheroes list",
+                    content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, array = @ArraySchema(schema = @Schema(implementation = SuperHero.class)))}),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    })
+    @GetMapping("/can-fly/{canFly}")
+    public List<SuperHero> getSuperHeroWhoCanFly(@Parameter(description = "Superhero who can or can not fly to be fetched") @PathVariable boolean canFly) {
+        return superHeroQueryService.getSuperHeroWhoCanFly(canFly);
+    }
 }
