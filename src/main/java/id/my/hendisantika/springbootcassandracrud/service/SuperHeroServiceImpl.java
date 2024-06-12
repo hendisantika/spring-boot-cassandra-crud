@@ -37,4 +37,9 @@ public class SuperHeroServiceImpl implements SuperHeroService {
     public List<SuperHero> findAll() {
         return repository.findAll();
     }
+
+    @Override
+    public SuperHero findById(Long id) {
+        return repository.findById(id).orElse(SuperHero.builder().build());
+    }
 }
