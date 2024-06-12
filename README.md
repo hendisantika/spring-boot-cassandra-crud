@@ -13,3 +13,7 @@
 Swagger UI
 
 ![Swagger UI](img/Swagger-UI.png "Swagger UI")
+
+CQLSH (Cassandra Query Language Shell)
+
+![CQLSH (Cassandra Query Language Shell)](img/cqlsh.png "CQLSH (Cassandra Query Language Shell)")
