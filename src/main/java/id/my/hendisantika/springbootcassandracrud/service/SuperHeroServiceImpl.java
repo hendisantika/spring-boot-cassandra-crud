@@ -52,4 +52,9 @@ public class SuperHeroServiceImpl implements SuperHeroService {
     public SuperHero update(SuperHero superHero) {
         return repository.save(superHero);
     }
+
+    @Override
+    public void delete(Long id) {
+        repository.findById(id).ifPresent(superHero -> repository.delete(superHero));
+    }
 }
