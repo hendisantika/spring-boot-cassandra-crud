@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -107,5 +108,20 @@ public class SuperHeroController {
         log.info("*** Saved Superhero to DB ***");
 
         return ResponseEntity.ok().body(savedSuperHero);
+    }
+
+    @Operation(summary = "Update Superhero")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Update Superhero",
+                    content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SuperHero.class))}),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+    })
+    @PutMapping
+    public ResponseEntity<SuperHero> update(@Parameter(description = "Superhero object to be updated") @RequestBody SuperHero superHero) {
+        log.info("*** Updating Superhero :: {}", superHero);
+        SuperHero updatedSuperHero = superHeroService.update(superHero);
+        log.info("*** Updated Superhero to DB :: {}", superHero);
+
+        return ResponseEntity.ok().body(updatedSuperHero);
     }
 }
