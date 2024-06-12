@@ -32,4 +32,9 @@ public class SuperHeroServiceImpl implements SuperHeroService {
 
         return repository.findAll();
     }
+
+    @Override
+    public List<SuperHero> findAll() {
+        return repository.findAll();
+    }
 }
