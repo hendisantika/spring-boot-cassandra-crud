@@ -1,0 +1,19 @@
+spring:
+  application.name: spring-boot-cassandra-crud
+  cassandra:
+    contact-points: localhost
+    keyspace-name: gojo
+    port: 9042
+
+springdoc:
+  version: 1.0.0
+  swagger-ui:
+    path: /swagger-ui
+  api-docs:
+    path: /v3/api-doc
+
+#logging:
+#  level:
+#    root: DEBUG
+application-description: '@project.description@'
+application-version: '@project.version@'
