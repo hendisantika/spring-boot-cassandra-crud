@@ -1,8 +1,12 @@
 package id.my.hendisantika.springbootcassandracrud.service;
 
+import id.my.hendisantika.springbootcassandracrud.model.SuperHero;
 import id.my.hendisantika.springbootcassandracrud.repository.SuperHeroRepository;
+import id.my.hendisantika.springbootcassandracrud.util.HelperUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,4 +23,13 @@ import org.springframework.stereotype.Service;
 public class SuperHeroServiceImpl implements SuperHeroService {
 
     private final SuperHeroRepository repository;
+
+    @Override
+    public List<SuperHero> save() {
+        List<SuperHero> superHeroes = repository.findAll();
+        if (superHeroes.isEmpty())
+            repository.saveAll(HelperUtil.getSuperHeroesData());
+
+        return repository.findAll();
+    }
 }
