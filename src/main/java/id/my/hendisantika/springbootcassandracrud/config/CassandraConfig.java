@@ -23,13 +23,13 @@ import java.util.List;
 @Configuration
 public class CassandraConfig extends AbstractCassandraConfiguration {
 
-    @Value("${spring.data.cassandra.keyspace-name: simple_crud}")
+    @Value("${spring.cassandra.keyspace-name}")
     private String keyspace;
 
-    @Value("${spring.data.cassandra.contact-points: localhost}")
+    @Value("${spring.cassandra.contact-points: localhost}")
     private String contactPoint;
 
-    @Value("${spring.data.cassandra.port: 9042}")
+    @Value("${spring.cassandra.port: 9042}")
     private int port;
 
 
