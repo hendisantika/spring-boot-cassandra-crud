@@ -44,4 +44,8 @@ public class CarService {
     public Car updateCar(Car car) {
         return carRepository.save(car);
     }
+
+    public boolean existById(UUID uuid) {
+        return carRepository.existsById(uuid);
+    }
 }
