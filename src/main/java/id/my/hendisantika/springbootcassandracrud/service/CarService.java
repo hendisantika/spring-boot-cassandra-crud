@@ -1,8 +1,11 @@
 package id.my.hendisantika.springbootcassandracrud.service;
 
+import id.my.hendisantika.springbootcassandracrud.model.Car;
 import id.my.hendisantika.springbootcassandracrud.repository.CarRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,4 +22,8 @@ import org.springframework.stereotype.Service;
 public class CarService {
 
     private final CarRepository carRepository;
+
+    public List<Car> findAll() {
+        return carRepository.findAll();
+    }
 }
