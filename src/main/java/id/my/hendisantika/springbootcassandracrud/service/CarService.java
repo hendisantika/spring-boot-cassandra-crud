@@ -30,6 +30,10 @@ public class CarService {
     }
 
     public Car findById(UUID uuid) {
-        return carRepository.findById(uuid).orElseThrow(() -> new NoSuchElementException());
+        return carRepository.findById(uuid).orElseThrow(NoSuchElementException::new);
+    }
+
+    public Car saveCar(Car car) {
+        return carRepository.save(car);
     }
 }
