@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.
@@ -25,5 +27,9 @@ public class CarService {
 
     public List<Car> findAll() {
         return carRepository.findAll();
+    }
+
+    public Car findById(UUID uuid) {
+        return carRepository.findById(uuid).orElseThrow(() -> new NoSuchElementException());
     }
 }
