@@ -5,6 +5,7 @@ import id.my.hendisantika.springbootcassandracrud.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,4 +57,12 @@ public class CarController {
 
         throw new IllegalArgumentException("Car with id " + id + "not found");
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteCar(@PathVariable("id") String id) {
+        carservice.deleteCar(UUID.fromString(id));
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }
